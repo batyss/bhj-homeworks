@@ -1,22 +1,20 @@
 const cookie = document.getElementById('cookie');
 let counter = +document.getElementById('clicker__counter').textContent;
-let lastTime = new Date;
+let lastTime = 0;
+let currentTime;
 
 function countClicks() {	
-	let currentTime = new Date;
+	currentTime = new Date;
 	cookie.width = 250;
-	 counter = counter + 1;
-	 clicker__counter.textContent = counter;
+	counter += 1;
+	clicker__counter.textContent = counter;
 	setTimeout(returnSizes, 70);
-	
-	let speedClick = (1/((currentTime - lastTime)*1000)).toFixed(2);
-	speed__counter.textContent = speedClick;
-	//console.log(speedClick);
+	countSpeed();
 	lastTime = currentTime;
 }
 
-function returnSizes() {
-	cookie.width = 200;
-}
+returnSizes = () => {cookie.width = 200};
+
+countSpeed = () => {speed__counter.textContent = (1/((currentTime - lastTime)/1000)).toFixed(2)};
 
 cookie.onclick = countClicks;
