@@ -13,7 +13,7 @@ function pushPrev() {
 	if (n === 0) {
 		n = q;
 	}
-	dots[n - 1].onclick();
+	dots[n - 1].onclick(); // вот здесь непонятно
 	let previousSlide = document.getElementsByClassName('slider__item')[n -= 1];
 		previousSlide.classList.add('slider__item_active');
 }
@@ -24,7 +24,7 @@ function pushNext() {
 	if (n === q - 1) {
 		n = -1;
 	}
-	dots[n + 1].onclick();
+	dots[n + 1].onclick(); // и здесь
 	let nextSlide = document.getElementsByClassName('slider__item')[n += 1];
 	nextSlide.classList.add('slider__item_active');
 }
