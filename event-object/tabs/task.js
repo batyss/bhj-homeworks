@@ -12,13 +12,6 @@ function tumbler() {
 	}
 	
 	this.classList.add('tab_active');
-	let currIndex;
-	
-	for (let k = 0; k < tabs.length; k++) {
-		if (tabs[k].classList.contains('tab_active')) {;
-		currIndex = k;
-		}
-	}
-
+	let currIndex = Array.from(tabs).indexOf(document.querySelector('.tab_active'));
 	contents[currIndex].classList.add('tab__content_active');
 }
