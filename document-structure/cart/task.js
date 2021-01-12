@@ -20,15 +20,14 @@ function addToCart() {
 	const addedProducts = document.querySelectorAll('.cart__product');
 	const currId = this.closest('.product').getAttribute('data-id');
 	const currQty = +this.closest('.product').querySelector('.product__quantity-value').textContent;
+	const alreadyInCart = Array.from(addedProducts).find((currItem) => currItem.getAttribute('data-id') === currId);
 
-	for (item of addedProducts) {
-		if (item.getAttribute('data-id') === currId) {
-			let currCartQty = +item.querySelector('.cart__product-count').textContent;
-			item.querySelector('.cart__product-count').textContent = `${currCartQty + currQty}`;
-			return;
-		} 	
+	if (alreadyInCart) {
+		let currCartQty = +alreadyInCart.querySelector('.cart__product-count').textContent;
+		alreadyInCart.querySelector('.cart__product-count').textContent = `${currCartQty + currQty}`;
+		return;
 	}
-	
+
 	productsCart.insertAdjacentHTML('afterbegin', 
 		`<div class="cart__product" data-id=${currId}>
     		<img class="cart__product-image" src=${this.closest('.product').querySelector('.product__image').src}>
